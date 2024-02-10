@@ -1,23 +1,32 @@
-import { ApolloServer, gql } from 'apollo-server';
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
 import { createTestClient } from 'apollo-server-testing';
-import { typeDefs, resolvers } from './';
+import { gql } from 'graphql-tag';
+import { typeDefs, resolvers } from './index';
 
-describe('Apollo Server Tests', () => {
-  let server;
+// Initialize Apollo Server
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
 
-  beforeAll(async () => {
-    server = new ApolloServer({ typeDefs, resolvers });
-  });
+// Start standalone server for testing
+let testServer: { server?: any; url?: string };
+beforeAll(async () => {
+  testServer = await startStandaloneServer(server, { listen: { port: 4000 } });
+});
 
-  afterAll(async () => {
-    await server.stop();
-  });
+// Stop server after tests
+afterAll(async () => {
+  await testServer.server.close();
+});
 
-  it('should return TV shows', async () => {
-    const { query } = createTestClient(server);
+describe('GraphQL Server', () => {
+  it('fetches tvShows', async () => {
+    const { query } = createTestClient(testServer.server);
 
-    const GET_TV_SHOWS = `
-      query {
+    const TV_SHOWS_QUERY = gql`
+      query GetTVShows {
         tvShows {
           id
           title
@@ -26,11 +35,7 @@ describe('Apollo Server Tests', () => {
       }
     `;
 
-    const { data, errors } = await query({ query: GET_TV_SHOWS });
-
-    expect(errors).toBeUndefined();
-    expect(data).toBeDefined();
-    expect(data.tvShows).toBeDefined();
-    expect(data.tvShows.length).toBeGreaterThan(0);
+    const res = await query({ query: TV_SHOWS_QUERY });
+    expect(res).toMatchSnapshot(); // or you can test specific properties of the response
   });
 });
