@@ -13,6 +13,7 @@ const tvShows = [
 const typeDefs = gql`
   type Query {
     tvShows: [TVShow]
+    tvShow(id: ID!): TVShow
   }
 
   type TVShow {
@@ -26,6 +27,8 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     tvShows: () => tvShows,
+    tvShow: (_: any, args: { id: string }) =>
+      tvShows.find((show) => show.id === args.id),
   },
 };
 
@@ -35,14 +38,23 @@ const server = new ApolloServer({
   resolvers,
 });
 
-// Start the standalone server
+let serverInstance: { url: any; server?: any };
+
 async function startServer() {
-  const { url } = await startStandaloneServer(server, {
+  serverInstance = await startStandaloneServer(server, {
     listen: { port: 4000 },
   });
-
-  console.log(`🚀 Server ready at ${url}`);
+  serverInstance.server = server; // Store the server instance
+  console.log(`🚀 Server ready at ${serverInstance.url}`);
+  return serverInstance;
 }
 
-startServer();
-export { typeDefs, resolvers };
+async function stopServer() {
+  await serverInstance.server.stop();
+}
+
+if (require.main === module) {
+  startServer();
+}
+
+export { typeDefs, resolvers, startServer, stopServer };

@@ -1,41 +1,66 @@
-import { ApolloServer } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
-import { createTestClient } from 'apollo-server-testing';
 import { gql } from 'graphql-tag';
-import { typeDefs, resolvers } from './index';
+import { GraphQLClient } from 'graphql-request';
+import { startServer, stopServer } from './index';
 
-// Initialize Apollo Server
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-});
+const GET_TV_SHOWS = gql`
+  query GetTVShows {
+    tvShows {
+      id
+      title
+      seasons
+    }
+  }
+`;
 
-// Start standalone server for testing
-let testServer: { server?: any; url?: string };
-beforeAll(async () => {
-  testServer = await startStandaloneServer(server, { listen: { port: 4000 } });
-});
-
-// Stop server after tests
-afterAll(async () => {
-  await testServer.server.close();
-});
+const GET_TV_SHOW_BY_ID = gql`
+  query GetTVShowById($id: ID!) {
+    tvShow(id: $id) {
+      id
+      title
+      seasons
+    }
+  }
+`;
 
 describe('GraphQL Server', () => {
-  it('fetches tvShows', async () => {
-    const { query } = createTestClient(testServer.server);
+  let client: GraphQLClient;
+  let serverInstance;
 
-    const TV_SHOWS_QUERY = gql`
-      query GetTVShows {
-        tvShows {
-          id
-          title
-          seasons
-        }
-      }
-    `;
+  beforeAll(async () => {
+    serverInstance = await startServer();
+    client = new GraphQLClient(serverInstance.url);
+  });
 
-    const res = await query({ query: TV_SHOWS_QUERY });
-    expect(res).toMatchSnapshot(); // or you can test specific properties of the response
+  afterAll(async () => {
+    await stopServer();
+  });
+
+  it('fetches tv shows', async () => {
+    const response: {
+      tvShows: Array<{ id: string; title: string; seasons: number }>;
+    } = await client.request(GET_TV_SHOWS);
+    expect(response.tvShows).toEqual([
+      { id: '1', title: 'Breaking Bad', seasons: 5 },
+      { id: '2', title: 'Game of Thrones', seasons: 8 },
+      // Add more shows
+    ]);
+  });
+
+  it('fetches a specific tv show by id', async () => {
+    const response: {
+      tvShow: { id: string; title: string; seasons: number };
+    } = await client.request(GET_TV_SHOW_BY_ID, { id: '1' });
+    expect(response.tvShow).toEqual({
+      id: '1',
+      title: 'Breaking Bad',
+      seasons: 5,
+    });
+  });
+
+  it('returns null when tv show is not found', async () => {
+    const response: {
+      tvShow: { id: string; title: string; seasons: number };
+    } = await client.request(GET_TV_SHOW_BY_ID, { id: '3' });
+    expect(response.tvShow).toBeNull();
   });
 });
