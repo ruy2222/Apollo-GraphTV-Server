@@ -1,12 +1,13 @@
 # Dependency directories
-# node_modules/
+node_modules/
 
 # Build outputs
 dist/
 build/
+out/
 
 # Environment variables
-.env
+.env*
 
 # IDE and editor directories
 .vscode/
@@ -18,14 +19,18 @@ build/
 .DS_Store
 Thumbs.db
 
-# Optional: npm debug logs
+# Optional: npm and yarn debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
 # Logs
-logs
+logs/
 *.log
 
 # Coverage directory used by tools like Istanbul
 coverage/
+
+# Temporary files
+*.tmp
+*.temp
