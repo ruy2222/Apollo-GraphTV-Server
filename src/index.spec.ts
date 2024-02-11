@@ -52,8 +52,8 @@ describe('GraphQL Server', () => {
     } = await client.request(GET_TV_SHOW_BY_ID, { id: '1' });
     expect(response.tvShow).toEqual({
       id: '1',
-      title: 'Breaking Bad',
-      seasons: 5,
+      title: 'Family guy',
+      seasons: 3,
     });
   });
 
