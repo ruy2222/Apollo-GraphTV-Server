@@ -4,8 +4,8 @@ import { gql } from 'graphql-tag';
 
 // Mock data
 const tvShows = [
-  { id: '1', title: 'Breaking Bad', seasons: 5 },
-  { id: '2', title: 'Game of Thrones', seasons: 8 },
+  { id: '1', title: 'Family guy', seasons: 3 },
+  { id: '2', title: 'South Park', seasons: 5 },
   // Add more shows
 ];
 

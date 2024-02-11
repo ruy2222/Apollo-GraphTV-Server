@@ -40,8 +40,8 @@ describe('GraphQL Server', () => {
       tvShows: Array<{ id: string; title: string; seasons: number }>;
     } = await client.request(GET_TV_SHOWS);
     expect(response.tvShows).toEqual([
-      { id: '1', title: 'Breaking Bad', seasons: 5 },
-      { id: '2', title: 'Game of Thrones', seasons: 8 },
+      { id: '1', title: 'Family guy', seasons: 3 },
+      { id: '2', title: 'South Park', seasons: 5 },
       // Add more shows
     ]);
   });
