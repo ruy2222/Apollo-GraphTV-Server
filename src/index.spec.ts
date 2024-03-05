@@ -2,6 +2,7 @@ import { gql } from 'graphql-tag';
 import { GraphQLClient } from 'graphql-request';
 import { startServer, stopServer } from './index';
 
+// 📝 Define GraphQL queries
 const GET_TV_SHOWS = gql`
   query GetTVShows {
     tvShows {
@@ -22,20 +23,23 @@ const GET_TV_SHOW_BY_ID = gql`
   }
 `;
 
+// 🚀 Describe tests for the GraphQL Server
 describe('GraphQL Server', () => {
   let client: GraphQLClient;
   let serverInstance;
 
+  // 🏁 Before all tests, start the server
   beforeAll(async () => {
     serverInstance = await startServer();
     client = new GraphQLClient(serverInstance.url);
   });
 
+  // 🛑 After all tests, stop the server
   afterAll(async () => {
     await stopServer();
   });
 
-  it('fetches tv shows', async () => {
+  it('📺 fetches tv shows', async () => {
     const response: {
       tvShows: Array<{ id: string; title: string; seasons: number }>;
     } = await client.request(GET_TV_SHOWS);
@@ -46,7 +50,7 @@ describe('GraphQL Server', () => {
     ]);
   });
 
-  it('fetches a specific tv show by id', async () => {
+  it('🔍 fetches a specific tv show by id', async () => {
     const response: {
       tvShow: { id: string; title: string; seasons: number };
     } = await client.request(GET_TV_SHOW_BY_ID, { id: '1' });
@@ -57,7 +61,7 @@ describe('GraphQL Server', () => {
     });
   });
 
-  it('returns null when tv show is not found', async () => {
+  it('❌ returns null when tv show is not found', async () => {
     const response: {
       tvShow: { id: string; title: string; seasons: number };
     } = await client.request(GET_TV_SHOW_BY_ID, { id: '3' });
