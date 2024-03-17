@@ -1,4 +1,4 @@
-# My GraphQL Apollo Server 🚀
+# Apollo GraphTV Server🚀
 
 Welcome to My GraphQL Apollo Server! This project is a simple yet powerful GraphQL server built with Apollo Server, Node.js, and TypeScript. It serves as a mock API for managing TV shows data, allowing users to query information about various TV shows.
 
