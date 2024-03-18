@@ -22,12 +22,13 @@ Welcome to My GraphQL Apollo Server! This project is a simple yet powerful Graph
 
 ```graphql
 query {
-  tvShows {
-    id
-    title
-    seasons
-  }
-}`
+tvShows {
+id
+title
+seasons
+}
+}
+```
 
 
 ## Contributing  🤝
