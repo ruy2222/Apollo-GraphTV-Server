@@ -27,7 +27,7 @@ query {
     title
     seasons
   }
-}
+}`
 
 
 ## Contributing  🤝
