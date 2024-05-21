@@ -27,4 +27,13 @@ jobs:
       - name: 🧪 Run tests with coverage
         run: npm run test:coverage
         env:
-          CI: true # 🤖 CI mode
+          CI: true
+      - name: 🎭 Mask Debricked credentials
+        run: |
+       echo "::add-mask::${{ secrets.DEBRICKED_USERNAME }}"
+       echo "::add-mask::${{ secrets.DEBRICKED_PASSWORD }}"
+      - name: 🛡️ Debricked Vulnerability Scan
+        uses: Debricked/scan-action@v1
+        with:
+            debricked-username: ${{ secrets.DEBRICKED_USERNAME }}
+            debricked-password: ${{ secrets.DEBRICKED_PASSWORD }}
