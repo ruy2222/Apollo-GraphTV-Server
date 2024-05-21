@@ -33,7 +33,7 @@ jobs:
           echo "::add-mask::${{ secrets.DEBRICKED_USERNAME }}"
           echo "::add-mask::${{ secrets.DEBRICKED_PASSWORD }}"
       - name: 🛡️ Debricked Vulnerability Scan
-        uses: Debricked/scan-action@v1
-        with:
-          debricked-username: ${{ secrets.DEBRICKED_USERNAME }}
-          debricked-password: ${{ secrets.DEBRICKED_PASSWORD }}
+        run: |
+          curl -s https://app.debricked.com/api/v1/cli/download -o debricked-cli.phar
+          chmod +x debricked-cli.phar
+          ./debricked-cli.phar ci:upload --username ${{ secrets.DEBRICKED_USERNAME }} --password ${{ secrets.DEBRICKED_PASSWORD }} --repository ${{ github.repository }} --commit ${{ github.sha }}
