@@ -32,10 +32,11 @@ jobs:
         run: |
           echo "::add-mask::${{ secrets.DEBRICKED_USERNAME }}"
           echo "::add-mask::${{ secrets.DEBRICKED_PASSWORD }}"
+      - name: Install Debricked CLI
+        run: |
+          curl -L https://github.com/debricked/cli/releases/latest/download/debricked-linux-amd64.tar.gz -o debricked.tar.gz
+          tar -xzf debricked.tar.gz
+          sudo mv debricked /usr/local/bin/debricked
       - name: 🛡️ Debricked Vulnerability Scan
-        uses: debricked/actions/scan@v1
-        with:
-          username: ${{ secrets.DEBRICKED_USERNAME }}
-          password: ${{ secrets.DEBRICKED_PASSWORD }}
-          repository: ${{ github.repository }}
-          commit: ${{ github.sha }}
+        run: |
+          ./debricked scan -u ${{ secrets.DEBRICKED_USERNAME }} -p ${{ secrets.DEBRICKED_PASSWORD }} -r ${{ github.repository }} -c ${{ github.sha }}
