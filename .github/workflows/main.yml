@@ -39,4 +39,4 @@ jobs:
           sudo mv debricked /usr/local/bin/debricked
       - name: 🛡️ Debricked Vulnerability Scan
         run: |
-          ./debricked scan -u ${{ secrets.DEBRICKED_USERNAME }} -p ${{ secrets.DEBRICKED_PASSWORD }} -r ${{ github.repository }} -c ${{ github.sha }}
+          debricked ci:upload -u ${{ secrets.DEBRICKED_USERNAME }} -p ${{ secrets.DEBRICKED_PASSWORD }} -r ${{ github.repository }} -c ${{ github.sha }}
