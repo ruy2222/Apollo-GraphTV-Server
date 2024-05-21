@@ -35,7 +35,6 @@ jobs:
       - name: Install Debricked CLI
         run: |
           curl -L https://github.com/debricked/cli/releases/latest/download/cli_macOS_arm64.tar.gz | tar -xz debricked
-          tar -xzf debricked.tar.gz
           sudo mv debricked /usr/local/bin/debricked
       - name: 🛡️ Debricked Vulnerability Scan
         run: |
