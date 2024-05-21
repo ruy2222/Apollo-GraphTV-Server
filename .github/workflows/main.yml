@@ -30,10 +30,10 @@ jobs:
           CI: true
       - name: 🎭 Mask Debricked credentials
         run: |
-       echo "::add-mask::${{ secrets.DEBRICKED_USERNAME }}"
-       echo "::add-mask::${{ secrets.DEBRICKED_PASSWORD }}"
+          echo "::add-mask::${{ secrets.DEBRICKED_USERNAME }}"
+          echo "::add-mask::${{ secrets.DEBRICKED_PASSWORD }}"
       - name: 🛡️ Debricked Vulnerability Scan
         uses: Debricked/scan-action@v1
         with:
-            debricked-username: ${{ secrets.DEBRICKED_USERNAME }}
-            debricked-password: ${{ secrets.DEBRICKED_PASSWORD }}
+          debricked-username: ${{ secrets.DEBRICKED_USERNAME }}
+          debricked-password: ${{ secrets.DEBRICKED_PASSWORD }}
