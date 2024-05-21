@@ -34,7 +34,7 @@ jobs:
           echo "::add-mask::${{ secrets.DEBRICKED_PASSWORD }}"
       - name: Install Debricked CLI
         run: |
-          curl -L https://github.com/debricked/cli/releases/latest/download/debricked-linux-amd64.tar.gz -o debricked.tar.gz
+          curl -L https://github.com/debricked/cli/releases/latest/download/debricked-cli-linux-amd64.tar.gz -o debricked.tar.gz
           tar -xzf debricked.tar.gz
           sudo mv debricked /usr/local/bin/debricked
       - name: 🛡️ Debricked Vulnerability Scan
