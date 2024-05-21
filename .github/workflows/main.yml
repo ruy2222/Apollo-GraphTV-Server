@@ -30,13 +30,13 @@ jobs:
           CI: true
       - name: 🎭 Mask Debricked credentials
         run: |
-          echo "::add-mask::${{ secrets.DEBRICKED_USERNAME }}"
-          echo "::add-mask::${{ secrets.DEBRICKED_PASSWORD }}"
+          echo "::add-mask::${{ secrets.DEBRICKED_TOKEN }}"
+
       - name: Install Debricked CLI
         run: |
-          curl -L https://github.com/debricked/cli/releases/latest/download/cli_linux_x86_64.tar.gz | tar -xz debricked
+          curl -L https://github.com/debricked/cli/releases/latest/download/cli_macOS_arm64.tar.gz | tar -xz debricked
           tar -xzf debricked.tar.gz
           sudo mv debricked /usr/local/bin/debricked
       - name: 🛡️ Debricked Vulnerability Scan
         run: |
-          debricked ci:upload -u ${{ secrets.DEBRICKED_USERNAME }} -p ${{ secrets.DEBRICKED_PASSWORD }} -r ${{ github.repository }} -c ${{ github.sha }}
+          debricked ci:upload -t ${{ secrets.DEBRICKED_TOKEN }} -r ${{ github.repository }} -c ${{ github.sha }}
