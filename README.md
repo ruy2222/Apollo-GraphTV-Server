@@ -1,5 +1,11 @@
 # Apollo GraphTV Server🚀
 
+![GitHub Issues](https://img.shields.io/github/issues/Jagoda11/Apollo-GraphTV-Server?style=flat-square&color=orange)
+![Last Commit](https://img.shields.io/github/last-commit/Jagoda11/Apollo-GraphTV-Server/main?style=flat-square&color=blue)
+![Build Status](https://github.com/Jagoda11/Apollo-GraphTV-Server/actions/workflows/main.yml/badge.svg)
+![License](https://img.shields.io/github/license/Jagoda11/Apollo-GraphTV-Server?style=flat-square&color=green)
+
+
 Welcome to My GraphQL Apollo Server! This project is a simple yet powerful GraphQL server built with Apollo Server, Node.js, and TypeScript. It serves as a mock API for managing TV shows data, allowing users to query information about various TV shows.
 
 ## Features 🌟
