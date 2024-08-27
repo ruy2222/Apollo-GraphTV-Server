@@ -23,17 +23,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@apollo/server": "^4.10.4",
-    "aws-sdk": "^2.1661.0",
-    "graphql": "^16.8.1",
-    "graphql-request": "^6.1.0",
+    "@apollo/server": "^4.11.0",
+    "aws-sdk": "^2.1684.0",
+    "graphql": "^16.9.0",
+    "graphql-request": "^7.1.0",
     "graphql-tag": "^2.12.6"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.14.11",
+    "@types/node": "^22.5.0",
     "jest": "^29.7.0",
-    "ts-jest": "^29.2.3",
+    "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   }
