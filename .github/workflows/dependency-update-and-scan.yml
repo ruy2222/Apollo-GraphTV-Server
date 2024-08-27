@@ -19,13 +19,13 @@ jobs:
       - name: 🔧 Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Using Node.js version 20
-
-      - name: 📦 Install dependencies
-        run: npm install
+          node-version: '20'
 
       - name: 🗑️ Remove package-lock.json
         run: rm -f package-lock.json
+
+      - name: 📦 Install dependencies
+        run: npm install
 
       - name: ⬆️ Update all packages
         run: npm update --legacy-peer-deps
