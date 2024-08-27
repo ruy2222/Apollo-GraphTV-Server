@@ -24,11 +24,17 @@ jobs:
       - name: 🗑️ Remove package-lock.json
         run: rm -f package-lock.json
 
-      - name: ⬆️ Update all packages
-        run: npm update --legacy-peer-deps
+      - name: 📦 Install npm-check-updates
+        run: npm install -g npm-check-updates
+
+      - name: ⬆️ Update dependencies in package.json
+        run: ncu -u
 
       - name: 📦 Install dependencies
         run: npm install
+
+      - name: 📦 Update dependencies with legacy peer deps
+        run: npm update --legacy-peer-deps
 
       - name: 🎭 Mask Debricked credentials
         run: echo "::add-mask::${{ secrets.DEBRICKED_TOKEN }}"
