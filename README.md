@@ -3,8 +3,8 @@
 ![GitHub Issues](https://img.shields.io/github/issues/Jagoda11/Apollo-GraphTV-Server?style=flat-square&color=orange)
 ![Last Commit](https://img.shields.io/github/last-commit/Jagoda11/Apollo-GraphTV-Server/main?style=flat-square&color=blue)
 ![Build Status](https://github.com/Jagoda11/Apollo-GraphTV-Server/actions/workflows/main.yml/badge.svg)
+![Build Status](https://github.com/Jagoda11/Apollo-GraphTV-Server/actions/workflows/dependency-update-and-scan.yml/badge.svg?branch=master)
 ![License](https://img.shields.io/github/license/Jagoda11/Apollo-GraphTV-Server?style=flat-square&color=green)
-
 
 Welcome to My GraphQL Apollo Server! This project is a simple yet powerful GraphQL server built with Apollo Server, Node.js, and TypeScript. It serves as a mock API for managing TV shows data, allowing users to query information about various TV shows.
 
@@ -36,7 +36,6 @@ seasons
 }
 ```
 
-
 ## Contributing  🤝
 
 Contributions are welcome! If you'd like to contribute to this project, please see the contribution guidelines
@@ -45,6 +44,27 @@ for more information.
 ## License  📄
 
 This project is licensed under the MIT License.
+
+## Continuous Integration and Dependency Management ⚙️
+
+This project includes two GitHub Actions workflows to ensure code quality and maintain up-to-date dependencies:
+
+### Node.js CI 🚀
+
+This workflow runs automatically on every push to the `main` branch and on pull requests. It performs the following tasks:
+
+- **Builds the project** to ensure there are no build errors.
+- **Runs tests with coverage** to ensure the codebase remains functional and that test coverage is maintained.
+
+### Dependency Update and Vulnerability Scan 🛡️
+
+This workflow is scheduled to run daily and can also be triggered manually. It performs the following tasks:
+
+- **Updates all npm dependencies** to their latest versions.
+- **Performs a vulnerability scan** using Debricked to ensure that updated dependencies do not introduce security vulnerabilities.
+- **Commits and pushes any changes** if dependencies are updated successfully.
+
+These workflows help maintain the health and security of the project, ensuring it remains robust and up-to-date.
 
 ---
 
