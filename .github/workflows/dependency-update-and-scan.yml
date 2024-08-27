@@ -24,6 +24,9 @@ jobs:
       - name: 📦 Install dependencies
         run: npm install
 
+      - name: 🗑️ Remove package-lock.json
+        run: rm -f package-lock.json
+
       - name: ⬆️ Update all packages
         run: npm update --legacy-peer-deps
 
