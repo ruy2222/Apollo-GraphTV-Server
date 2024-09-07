@@ -43,7 +43,7 @@ for more information.
 
 ## License  📄
 
-This project is licensed under the MIT License.
+Just like how Pooh Bear shares his honey with his friends, this project is shared under the MIT License. 🍯🐻
 
 ## Continuous Integration and Dependency Management ⚙️
 
