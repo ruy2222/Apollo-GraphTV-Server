@@ -18,7 +18,6 @@
     "test:debug": "echo '🐛 Debugging tests...' && node --inspect-brk ./node_modules/.bin/jest --runInBand",
     "test:debug:watch": "echo '🐛👀 Watching and debugging tests...' && node --inspect-brk ./node_modules/.bin/jest --watchAll"
   },
-  
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -26,7 +25,7 @@
     "@apollo/server": "^4.11.0",
     "aws-sdk": "^2.1691.0",
     "graphql": "^16.9.0",
-    "graphql-request": "^7.1.0",
+    "graphql-request": "^6.1.0",
     "graphql-tag": "^2.12.6"
   },
   "devDependencies": {
