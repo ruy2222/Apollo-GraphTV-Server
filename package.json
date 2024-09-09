@@ -1,7 +1,7 @@
 {
   "name": "my-graphql-apollo",
   "version": "1.0.0",
-  "description": "",
+  "description": "GraphQL server built with Apollo Server, Node.js, and TypeScript. It serves as a mock API for managing TV shows data",
   "main": "index.js",
   "scripts": {
     "audit": "echo '🔍 Running audit...' && npm audit",
