@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { gql } from 'graphql-tag';
 import { GraphQLClient } from 'graphql-request';
 import { startServer, stopServer } from './index';
