@@ -19,7 +19,7 @@ jobs:
           node-version: '20'
 
       - name: 🗑️ Remove package-lock.json
-        run: rm -f package-lock.json
+        run: npm run clean
 
       - name: 📦 Install npm-check-updates
         run: npm install -g npm-check-updates
