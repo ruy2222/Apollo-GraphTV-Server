@@ -11,7 +11,7 @@
     "dev": "echo '🚀 Starting development server...' && ts-node src/index.ts",
     "start": "echo '🟢 Starting app...' && node dist/index.js",
     "watch": "echo '👀 Watching for changes...' && nodemon --exec npm run dev",
-    "test": "echo '✅ Running tests...' && jest",
+    "test": "echo '✅ Running tests...' && NODE_OPTIONS=--experimental-vm-modules jest",
     "test:watch": "echo '🔍✅ Watching tests...' && jest --watch",
     "test:coverage": "echo '📊 Generating test coverage...' && jest --coverage",
     "test:verbose": "echo '🗣️ Running tests in verbose mode...' && jest --verbose",
@@ -23,18 +23,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@apollo/server": "^4.11.0",
-    "aws-sdk": "^2.1691.0",
-    "graphql": "^16.9.0",
-    "graphql-request": "^6.1.0",
+    "@apollo/server": "^4.12.2",
+    "aws-sdk": "^2.1692.0",
+    "graphql": "^16.11.0",
+    "graphql-request": "^7.1.0",
     "graphql-tag": "^2.12.6"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.13",
-    "@types/node": "^22.7.4",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.2.5",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.8",
+    "jest": "^30.0.3",
+    "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.6.2"
+    "typescript": "^5.8.3"
   }
 }

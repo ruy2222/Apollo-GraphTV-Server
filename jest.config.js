@@ -1,14 +1,13 @@
 export default {
   preset: 'ts-jest/presets/default-esm',
   testEnvironment: 'node',
-  globals: {
-    'ts-jest': {
-      useESM: true,
-      tsconfig: 'tsconfig.json',
-    },
+  extensionsToTreatAsEsm: ['.ts'],
+  transform: {
+    '^.+\\.ts$': ['ts-jest', { useESM: true }],
   },
   moduleNameMapper: {
-    '^\.\/index.js$': '<rootDir>/src/index.ts',
+    '^(\\.{1,2}/.*)\\.js$': '$1',
   },
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
+  transformIgnorePatterns: ['/node_modules/(?!(graphql-tag|graphql-request)/)'],
 };
