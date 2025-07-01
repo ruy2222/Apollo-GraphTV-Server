@@ -1,6 +1,6 @@
 import { gql } from 'graphql-tag';
 import { GraphQLClient } from 'graphql-request';
-import { startServer, stopServer } from './index';
+import { startServer, stopServer } from './index.js';
 
 // 📝 Define GraphQL queries
 const GET_TV_SHOWS = gql`

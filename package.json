@@ -1,6 +1,7 @@
 {
   "name": "my-graphql-apollo",
   "version": "1.0.0",
+  "type": "module",
   "description": "GraphQL server built with Apollo Server, Node.js, and TypeScript. It serves as a mock API for managing TV shows data",
   "main": "index.js",
   "scripts": {
